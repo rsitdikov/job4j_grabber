@@ -1,0 +1,7 @@
+CREATE TABLE post (
+id SERIAL PRIMARY KEY ,
+name VARCHAR (200),
+text VARCHAR ,
+link VARCHAR (500) UNIQUE ,
+created TIMESTAMP
+);
