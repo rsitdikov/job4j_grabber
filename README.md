@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/rsitdikov/job4j_grabber.svg?branch=master)](https://travis-ci.org/rsitdikov/job4j_grabber)
+[![Build Status](https://app.travis-ci.com/rsitdikov/job4j_grabber.svg?branch=master)](https://app.travis-ci.com/rsitdikov/job4j_grabber)
 
 [![codecov](https://codecov.io/gh/rsitdikov/job4j_grabber/branch/master/graph/badge.svg?token=UAME4ZPBK9)](https://codecov.io/gh/rsitdikov/job4j_grabber)
-
 # job4j_grabber
 Описание.
 
