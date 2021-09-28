@@ -4,10 +4,30 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import utils.SqlRuDateTimeParser;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class SqlRuParse {
+
+    public Post detail(String link) throws IOException {
+        Document doc = Jsoup.connect(link).get();
+        String title = doc.select(".messageHeader")
+                .first()
+                .text();
+        String description = doc.select(".msgBody")
+                .get(1)
+                .text();
+        String dateTime = doc.select(".msgFooter")
+                .first()
+                .text()
+                .split(" \\[")[0];
+        LocalDateTime created = new SqlRuDateTimeParser()
+                .parse(dateTime);
+        return new Post(
+                title, link, description, created
+        );
+    }
 
     public static void main(String[] args) throws Exception {
         int pages = 5;
@@ -31,5 +51,10 @@ public class SqlRuParse {
                 System.out.println(date.format(formatter));
             }
         }
+        System.out.println("Post details: ");
+        System.out.println(new SqlRuParse()
+                .detail("https://www.sql.ru/forum/1325330"
+                        + "/lidy-be-fe-senior-cistemnye-analitiki-qa-i-devops-moskva-do-200t")
+                .toString());
     }
 }
